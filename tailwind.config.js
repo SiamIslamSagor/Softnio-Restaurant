@@ -6,6 +6,7 @@ export default {
       colors: {
         yellow: "#FEBF00",
         "text-primary": "#0A1425",
+        red: "#BD1F17",
       },
     },
   },

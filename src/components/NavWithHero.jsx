@@ -11,7 +11,7 @@ const NavWithHero = () => {
       }}
     >
       <Navbar />
-      {/* <HeroBanner /> */}
+      <HeroBanner />
     </div>
   );
 };

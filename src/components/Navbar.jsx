@@ -4,13 +4,15 @@ import { Fade as Hamburger } from "hamburger-react";
 
 const Navbar = () => {
   return (
-    <header className="w-full sticky top-0 bg-red700 px-7">
+    <header className="w-full sticky top-0 z-[100] backdrop-blur-md px-[30px] bg-red700">
       <nav className="web-container flex justify-between items-center text-white py-[2rem] gap-[3.75rem]">
         <Logo />
         <div className="flex gap-10 text-base capitalize font-medium max-lg:hidden">
           {pages?.map((page, idx) => (
             <a key={page?.name + idx} href={page?.path}>
-              <div>{page?.name}</div>
+              <div>
+                <p>{page?.name}</p>
+              </div>
             </a>
           ))}
         </div>

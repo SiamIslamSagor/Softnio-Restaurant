@@ -8,6 +8,7 @@
   .web-container {
     max-width: 1320px;
     margin-inline: auto;
+    /* margin-inline: 30px; */
   }
 
   /* ------------------- fonts ------------------ */
