@@ -1,16 +1,17 @@
 import Navbar from "./Navbar";
 import heroBg from "../assets/heroBg.png";
+import HeroBanner from "./HeroBanner";
 
 const NavWithHero = () => {
   return (
     <div
       className="w-full bg-[#BD1F17] min-h-screen "
       style={{
-        background: `url(${heroBg}) `,
+        backgroundImage: `url(${heroBg}) `,
       }}
     >
       <Navbar />
-      <div className="min-h-96 "></div>
+      {/* <HeroBanner /> */}
     </div>
   );
 };
