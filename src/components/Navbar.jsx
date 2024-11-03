@@ -1,10 +1,16 @@
 import Button from "./utils/Button";
 import Logo from "./utils/Logo";
+import heroBg from "../assets/heroBg.png";
 import { Fade as Hamburger } from "hamburger-react";
 
 const Navbar = () => {
   return (
-    <header className="w-full sticky top-0 z-[100] backdrop-blur-md px-[30px] bg-red700">
+    <header
+      className="w-full sticky top-0 z-[100] backdrop-blur-md px-[30px] bg-[#BD1F17]"
+      style={{
+        backgroundImage: `url(${heroBg}) `,
+      }}
+    >
       <nav className="web-container flex justify-between items-center text-white py-[2rem] gap-[3.75rem]">
         <Logo />
         <div className="flex gap-10 text-base capitalize font-medium max-lg:hidden">

@@ -2,14 +2,16 @@ import About from "../components/About";
 import BookingForm from "../components/BookingForm";
 import FoodItems from "../components/FoodItems";
 import Footer from "../components/Footer";
-import NavWithHero from "../components/NavWithHero";
+import HeroBanner from "../components/HeroBanner";
+import Navbar from "../components/Navbar";
 import Testimonials from "../components/Testimonials";
 
 const Root = () => {
   return (
     <div className="w-full">
       <main>
-        <NavWithHero />
+        <Navbar />
+        <HeroBanner />
         <About />
         <FoodItems />
         <BookingForm />

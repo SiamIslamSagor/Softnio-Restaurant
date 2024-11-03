@@ -1,13 +1,19 @@
 import Button from "./utils/Button";
 import heroBannerImg from "../assets/heroBannerImg.png";
+import heroBg from "../assets/heroBg.png";
 
 const HeroBanner = () => {
   return (
-    <div className="px-[30px]">
+    <div
+      className="px-[30px] w-full bg-[#BD1F17]"
+      style={{
+        backgroundImage: `url(${heroBg}) `,
+      }}
+    >
       <div className="web-container sm:py-10 pb-10 sm:pb-20 lg:py-32 max-lg:space-y-10 lg:flex items-center justify-between">
         <div className="space-y-[32px] sm:space-y-[38px]">
           <div className="space-y-4 text-white">
-            <h2 className="z-50 font-beba-neue text-[48px] sm:text-[5rem] lg:text-[120px] bg-red w-fit max-sm:tracking-tight lg:pr-10 leading-[108.333%] absolute bg-opacity-50">
+            <h2 className="z-50 font-beba-neue text-[48px] sm:text-[5rem] lg:text-[120px]  bg-gradient-to-r from-transparent to-[#bd1f177e] w-fit max-sm:tracking-tight lg:pr-10 leading-[108.333%] absolute bg-opacity-50">
               Taste the authentic
               <br /> Saudi cuisine
             </h2>

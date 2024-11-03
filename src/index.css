@@ -26,3 +26,31 @@
 body {
   font-family: Roboto, sans-serif;
 }
+
+/* -------------------------------------------- */
+/*                ROW CSS STYLING               */
+/* -------------------------------------------- */
+
+/* -------------- SCROLLBAR STYLE ------------- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a1425;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #febf00;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #bd1f17;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}

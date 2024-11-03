@@ -1,4 +1,3 @@
-import Navbar from "./Navbar";
 import heroBg from "../assets/heroBg.png";
 import HeroBanner from "./HeroBanner";
 
@@ -10,7 +9,6 @@ const NavWithHero = () => {
         backgroundImage: `url(${heroBg}) `,
       }}
     >
-      <Navbar />
       <HeroBanner />
     </div>
   );
