@@ -1,9 +1,10 @@
 import foodImg from "../assets/aboutImg.png";
 import Button from "./utils/Button";
+import saladPlate from "../assets/saladImg.png";
 
 const About = () => {
   return (
-    <div className="px-[30px] py-[120px]">
+    <div className="px-[30px] py-[120px] relative">
       <div className="web-container">
         <div className="flex flex-col max-lggg: gap-8 lg:flex-row justify-between ">
           <div className="relative max-lg:w-full">
@@ -69,6 +70,9 @@ const About = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="absolute bottom-0 -right-72 rotate-[10deg] duration-1000 max-xl:hidden">
+        <img src={saladPlate} alt="salad's plate" />
       </div>
     </div>
   );

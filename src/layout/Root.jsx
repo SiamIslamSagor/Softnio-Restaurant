@@ -8,7 +8,7 @@ import Testimonials from "../components/Testimonials";
 
 const Root = () => {
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-hidden">
       <main>
         <Navbar />
         <HeroBanner />
