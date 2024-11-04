@@ -1,15 +1,28 @@
+import { motion } from "framer-motion";
+import { Fade as Hamburger } from "hamburger-react";
+import heroBg from "../assets/heroBg.png";
 import Button from "./utils/Button";
 import Logo from "./utils/Logo";
-import heroBg from "../assets/heroBg.png";
-import { Fade as Hamburger } from "hamburger-react";
 
-const Navbar = () => {
+const Navbar = ({ isBannerHidden }) => {
+  const animationVariants = {
+    haveBg: {
+      opacity: 1,
+    },
+    transparentBg: {
+      opacity: 1,
+      backgroundImage: `url(${heroBg}) `,
+      backgroundColor: "rgb(189 31 23)",
+      boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+    },
+  };
+
   return (
-    <header
-      className="w-full sticky top-0 z-[100] backdrop-blur-md px-[30px] bg-[#BD1F17]"
-      style={{
-        backgroundImage: `url(${heroBg}) `,
-      }}
+    <motion.header
+      className="w-full fixed top-0 z-[100] backdrop-blur-md px-[30px]"
+      variants={animationVariants}
+      animate={isBannerHidden ? "transparentBg" : "haveBg"}
+      transition={{ duration: 0.5 }}
     >
       <nav className="web-container flex justify-between items-center text-white py-[2rem] gap-[3.75rem]">
         <Logo />
@@ -17,7 +30,7 @@ const Navbar = () => {
           {pages?.map((page, idx) => (
             <a key={page?.name + idx} href={page?.path}>
               <div>
-                <p>{page?.name}</p>
+                <p className="">{page?.name}</p>
               </div>
             </a>
           ))}
@@ -31,7 +44,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-    </header>
+    </motion.header>
   );
 };
 

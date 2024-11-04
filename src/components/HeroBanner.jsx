@@ -1,11 +1,26 @@
 import Button from "./utils/Button";
 import heroBannerImg from "../assets/heroBannerImg.png";
 import heroBg from "../assets/heroBg.png";
+import { useEffect, useRef } from "react";
+import { useInView } from "framer-motion";
 
-const HeroBanner = () => {
+const HeroBanner = ({ setIsBannerHidden }) => {
+  const targetRef = useRef(null);
+
+  const isInView = useInView(targetRef, {
+    margin: "-112px 100px -112px 100px",
+    once: false,
+  });
+
+  useEffect(() => {
+    console.log("Element is in view: ", isInView);
+    setIsBannerHidden(!isInView);
+  }, [isInView, setIsBannerHidden]);
+
   return (
     <div
-      className="px-[30px] w-full bg-[#BD1F17]"
+      ref={targetRef}
+      className="px-[30px] pt-28 w-full bg-[#BD1F17]"
       style={{
         backgroundImage: `url(${heroBg}) `,
       }}

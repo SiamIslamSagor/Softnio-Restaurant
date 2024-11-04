@@ -1,3 +1,4 @@
+import { useState } from "react";
 import About from "../components/About";
 import BookingForm from "../components/BookingForm";
 import FoodItems from "../components/FoodItems";
@@ -7,11 +8,13 @@ import Navbar from "../components/Navbar";
 import Testimonials from "../components/Testimonials";
 
 const Root = () => {
+  const [isBannerHidden, setIsBannerHidden] = useState(false);
+  // console.log(isBannerHidden);
   return (
     <div className="w-full overflow-x-hidden">
       <main>
-        <Navbar />
-        <HeroBanner />
+        <Navbar isBannerHidden={isBannerHidden} />
+        <HeroBanner setIsBannerHidden={setIsBannerHidden} />
         <About />
         <FoodItems />
         <BookingForm />
