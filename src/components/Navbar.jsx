@@ -25,15 +25,27 @@ const Navbar = ({ isBannerHidden }) => {
       transition={{ duration: 0.5 }}
     >
       <nav className="web-container flex justify-between items-center text-white py-[2rem] gap-[3.75rem]">
-        <Logo />
-        <div className="flex gap-10 text-base capitalize font-medium max-lg:hidden">
-          {pages?.map((page, idx) => (
-            <a key={page?.name + idx} href={page?.path}>
-              <div>
-                <p className="">{page?.name}</p>
-              </div>
-            </a>
-          ))}
+        <div className="flex items-center gap-16">
+          <Logo />
+          <motion.div className="flex gap-10 text-base capitalize font-medium max-lg:hidden">
+            {pages?.map((page, idx) => (
+              <a key={page?.name + idx} href={page?.path} className=" ">
+                <motion.div
+                  initial={{
+                    y: 20,
+                    opacity: 0,
+                  }}
+                  animate={{
+                    y: 0,
+                    opacity: 1,
+                  }}
+                  transition={{ delay: 0.1 * (idx / 2) }}
+                >
+                  <p className="">{page?.name}</p>
+                </motion.div>
+              </a>
+            ))}
+          </motion.div>
         </div>
         <div className="flex items-center justify-center gap-4">
           <div className="max-sm:hidden">

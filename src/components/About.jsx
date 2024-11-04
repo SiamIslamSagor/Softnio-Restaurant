@@ -1,8 +1,14 @@
 import foodImg from "../assets/aboutImg.png";
 import Button from "./utils/Button";
 import saladPlate from "../assets/saladImg.png";
-
+import { useState } from "react";
+import { generateShortUUID } from "../utils";
+import { motion } from "framer-motion";
 const About = () => {
+  const [activeTab, setActiveTab] = useState("about");
+
+  let activeTabDetails = tabs?.find(t => t?.name === activeTab);
+
   return (
     <div className="px-[30px] py-[120px] relative">
       <div className="web-container">
@@ -21,25 +27,43 @@ const About = () => {
           </div>
           <div className="space-y-8 lg:max-w-[424px] xl:max-w-[624px]">
             <div>
-              <div className="flex gap-8 items-center">
-                <div className="px-4 py-2 text-sm bg-red text-white">About</div>
-                <div className="px-4 py-2 text-sm">About</div>
-                <div className="px-4 py-2 text-sm">About</div>
+              <div className="flex items-center">
+                {tabs?.map(tab => (
+                  <div
+                    onClick={() => setActiveTab(tab.name)}
+                    key={tab?.id}
+                    className={`px-4 py-2 text-sm capitalize cursor-pointer active:scale-95 duration-300 ${
+                      activeTab === tab.name && "bg-red text-white"
+                    }`}
+                  >
+                    {tab?.name}
+                  </div>
+                ))}
               </div>
               <hr className="border-red" />
             </div>
-            <div className="space-y-5">
-              <h4 className="font-beba-neue text-[40px] sm:text-6xl leading-[48px] ">
-                Exceptional culinary experience and delicious food
-              </h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare
-                non sed est cursus. Vel hac convallis ipsum, facilisi odio
-                pellentesque bibendum viverra tempus. Lorem ipsum dolor sit amet
-                consectetur adipiscing elit do eiusmod tempor incididunt ut
-                labore et dolore magna minim veniam nostrud exercitation.
-              </p>
-            </div>
+            {(activeTabDetails.name === "about" ||
+              activeTabDetails.name === "experience" ||
+              activeTabDetails.name === "contact") && (
+              <motion.div
+                key={activeTabDetails.name}
+                initial={{
+                  y: 20,
+                  opacity: 0,
+                }}
+                animate={{
+                  y: 0,
+                  opacity: 1,
+                }}
+                transition={{ duration: 0.5 }}
+                className="space-y-5"
+              >
+                <h4 className="font-beba-neue text-[40px] sm:text-6xl leading-[48px] ">
+                  {activeTabDetails?.heading}
+                </h4>
+                <p>{activeTabDetails?.description}</p>
+              </motion.div>
+            )}
             <div className="flex items-center gap-8">
               <Button text="about more" />
               <div className="flex items-center gap-2">
@@ -50,7 +74,7 @@ const About = () => {
           </div>
         </div>
         {/*  */}
-        <div className="flex justify-between  flex-wrap max-lgjustify-center items-center mt-10 md:mt-20">
+        <div className="flex relative z-20 bg-blue-30 justify-between  flex-wrap max-lgjustify-center items-center mt-10 md:mt-20">
           {aboutFeatures?.map((feat, idx) => (
             <div
               key={feat?.name + idx}
@@ -71,26 +95,60 @@ const About = () => {
           ))}
         </div>
       </div>
-      <div className="absolute bottom-0 -right-72 rotate-[10deg] duration-1000 max-xl:hidden">
-        <img src={saladPlate} alt="salad's plate" />
+      <div className="absolute -z-10 bottom-0 -right-72 rotate-[10deg] duration-1000 max-xl:hidden">
+        <motion.img
+          initial={{
+            x: 150,
+          }}
+          whileInView={{
+            x: 0,
+          }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          src={saladPlate}
+          alt="salad's plate"
+        />
       </div>
     </div>
   );
 };
+
+const tabs = [
+  {
+    id: generateShortUUID(),
+    name: "about",
+    heading: "Exceptional culinary experience and delicious food",
+    description:
+      "Lorpus. Lorem ipsum dolor sit amet consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore magna minim veniam nostrud exercita Lorem ipsum dolor sit amet consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore magna minim veniam nostrud exercitation.",
+  },
+  {
+    id: generateShortUUID(),
+    name: "experience",
+    heading: "delicious food Exceptional culinary experience and ",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare non sed est cursus. Vel hac convallis ipsum, facilisi odio pellentesque bibendum viverra tempus. s ipsum, facilisi odio pellentesque  Lorem ipsum dolor sit amet consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore magna minim veniam nostrud exercitation.",
+  },
+  {
+    id: generateShortUUID(),
+    name: "contact",
+    heading: "Exceptional delicious food culinary experience and",
+    description:
+      "Lorem iconvallis ipsum, facilisi odio pellentesque bibendum viverra tempus. Lorem ipsum dolor sit amet consectetur adipiscing elit do eiusmod tempor incididunpus. Lorem ipsum dolor sit amet consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore magna minim veniam nostrud exercitation.",
+  },
+];
 
 const CircleSvg = () => {
   return (
     <div className="relative">
       <div className="absolute size-full border-4 rounded-full scale-[.98] z-10" />
       <div className="absolute top-[7px] left-[7px] z-30">
-        <svg
+        <motion.svg
           xmlns="http://www.w3.org/2000/svg"
           width="17"
           height="18"
           viewBox="0 0 17 18"
           fill="none"
         >
-          <circle
+          <motion.circle
             cx="8.7113"
             cy="8.91698"
             r="6.18981"
@@ -98,7 +156,7 @@ const CircleSvg = () => {
             stroke="#FEBF00"
             strokeWidth="4"
           />
-        </svg>
+        </motion.svg>
       </div>
       <div className="relative z-30">
         <svg

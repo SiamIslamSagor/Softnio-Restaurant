@@ -2,7 +2,7 @@ import Button from "./utils/Button";
 import heroBannerImg from "../assets/heroBannerImg.png";
 import heroBg from "../assets/heroBg.png";
 import { useEffect, useRef } from "react";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const HeroBanner = ({ setIsBannerHidden }) => {
   const targetRef = useRef(null);
@@ -28,15 +28,37 @@ const HeroBanner = ({ setIsBannerHidden }) => {
       <div className="web-container sm:py-10 pb-10 sm:pb-20 lg:py-32 max-lg:space-y-10 lg:flex items-center justify-between">
         <div className="space-y-[32px] sm:space-y-[38px]">
           <div className="space-y-4 text-white">
-            <h2 className="z-50 font-beba-neue text-[48px] sm:text-[5rem] lg:text-[120px]  bg-gradient-to-r from-transparent to-[#bd1f177e] w-fit max-sm:tracking-tight lg:pr-10 leading-[108.333%] absolute bg-opacity-50">
+            <motion.h2
+              initial={{
+                x: -50,
+                opacity: 0,
+              }}
+              animate={{
+                x: 0,
+                opacity: 1,
+              }}
+              transition={{ duration: 0.5 }}
+              className="z-50 font-beba-neue text-[48px] sm:text-[5rem] lg:text-[120px]  bg-gradient-to-r from-transparent to-[#bd1f177e] w-fit max-sm:tracking-tight lg:pr-10 leading-[108.333%] absolute bg-opacity-50"
+            >
               Taste the authentic
               <br /> Saudi cuisine
-            </h2>
+            </motion.h2>
             <div className="min-h-[104px] sm:min-h-[173px] lg:min-h-[260px]" />
-            <h6 className="text-xl lg:text-2xl">
+            <motion.h6
+              initial={{
+                y: -20,
+                opacity: 0,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{ duration: 1 }}
+              className="text-xl lg:text-2xl"
+            >
               Among the best Saudi chefs in the world, serving <br /> you
               something beyond flavor.
-            </h6>
+            </motion.h6>
           </div>
           <div>
             <Button text="explore menu" />
@@ -44,12 +66,36 @@ const HeroBanner = ({ setIsBannerHidden }) => {
         </div>
 
         <div className="relative">
-          <div className="absolute max-sm:scale-75 max-sm:-top-5 max-sm:-right-2 -top-9 -right-7 -z-1">
+          <motion.div
+            initial={{
+              y: -280,
+              x: -140,
+              rotate: 260,
+              opacity: 0,
+            }}
+            animate={{
+              x: 0,
+              y: 0,
+              rotate: 0,
+              opacity: 1,
+            }}
+            transition={{ duration: 1, delay: 1 }}
+            className="absolute max-sm:scale-75 max-sm:-top-5 max-sm:-right-2 -top-9 -right-7 -z-1"
+          >
             <WhiteFlowerSvg />
-          </div>
+          </motion.div>
 
           <div className="z-10">
-            <img
+            <motion.img
+              initial={{
+                // y: -20,
+                opacity: 0,
+              }}
+              animate={{
+                // y: 0,
+                opacity: 1,
+              }}
+              transition={{ duration: 1.5 }}
               src={heroBannerImg}
               alt="hero banner image"
               className="max-lg:size-full"
@@ -57,14 +103,30 @@ const HeroBanner = ({ setIsBannerHidden }) => {
             />
           </div>
 
-          <div className="max-sm:scale-50 sm:size-[120px] bg-yellow ring-8 ring-yellow rounded-full flex items-center justify-center absolute -bottom-4 sm:bottom-6 md:bottom-8 2xl:bottom-2 -right-4 sm:right-6 md:right-8 2xl:-right-12 shadow-[500px]">
+          <motion.div
+            initial={{
+              scale: 0,
+              opacity: 0,
+            }}
+            animate={{
+              scale: 1,
+              opacity: 1,
+            }}
+            transition={{
+              duration: 0.5,
+              delay: 0.5,
+              damping: 200,
+              stiffness: 50,
+            }}
+            className="max-sm:scale-50 sm:size-[120px] bg-yellow ring-8 ring-yellow rounded-full flex items-center justify-center absolute -bottom-4 sm:bottom-6 md:bottom-8 2xl:bottom-2 -right-4 sm:right-6 md:right-8 2xl:-right-12 shadow-[500px]"
+          >
             <div className="rounded-full flex items-center justify-center p-3 border-2 border-dashed border-red">
               <p className="font-beba-neue text-4xl leading-[100%] font-bold text-text-primary p-2">
                 today <br />
                 offer
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
