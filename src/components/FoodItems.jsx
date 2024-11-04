@@ -28,7 +28,7 @@ const FoodItems = () => {
         style={{ scaleX: scrollYProgress }}
       />
       <div className="web-container ">
-        <div className=" absolute top-10 z-10">
+        <div className=" absolute top-10 sm:top-20 z-10">
           <SectionTitle
             heading="crispy, every bite
             taste"
@@ -40,7 +40,7 @@ const FoodItems = () => {
           modules={[Autoplay, Navigation, Pagination, A11y]}
           spaceBetween={30}
           slidesPerView={"auto"}
-          className="max-sm:!pb-[8rem] max-sm:!pt-[3rem] sm:!pt-[12rem]"
+          className="max-sm:!pb-[8rem] max-sm:!pt-[3rem] sm:!pt-[15rem]"
           watchOverflow={false}
           autoplay={{
             delay: 1500,
@@ -97,10 +97,10 @@ const SwiperNavButtons = ({ scrollYProgress, targetRef }) => {
   return (
     <div
       ref={targetRef}
-      className="flex max-sm:justify-center py-2 gap-8 absolute max-sm:bottom-5 max-sm:left-1/2 max-sm:-translate-x-1/2 sm:right-0 sm:top-14 z-40"
+      className="flex max-sm:justify-center py-2 gap-8 absolute max-sm:bottom-5 max-sm:left-1/2 max-sm:-translate-x-1/2 sm:right-0 sm:top-10 lg:top-20 z-40"
     >
       <motion.div
-        className="size-16 flex items-center justify-center rounded-full group cursor-pointer active:scale-90 duration-300 hover:bg-yellow"
+        className="max-sm:hidden size-16 flex items-center justify-center rounded-full group cursor-pointer active:scale-90 duration-300 hover:bg-yellow"
         style={{
           boxShadow: "0px 0px 13.636px 0px rgba(0, 0, 0, 0.10)",
           x: xValue1,
@@ -111,7 +111,7 @@ const SwiperNavButtons = ({ scrollYProgress, targetRef }) => {
         <FaAngleLeft className="text-3xl group-hover:text-red transition" />
       </motion.div>
       <motion.div
-        className="size-16 flex items-center justify-center rounded-full group cursor-pointer active:scale-90 duration-300 hover:bg-yellow"
+        className="max-sm:hidden size-16 flex items-center justify-center rounded-full group cursor-pointer active:scale-90 duration-300 hover:bg-yellow"
         style={{
           boxShadow: "0px 0px 13.636px 0px rgba(0, 0, 0, 0.10)",
           x: xValue2,
@@ -121,6 +121,25 @@ const SwiperNavButtons = ({ scrollYProgress, targetRef }) => {
       >
         <FaAngleRight className="text-3xl group-hover:text-red transition" />
       </motion.div>
+      {/* sm */}
+      <div
+        className="sm:hidden size-16 flex items-center justify-center rounded-full group cursor-pointer active:scale-90 duration-300 hover:bg-yellow"
+        style={{
+          boxShadow: "0px 0px 13.636px 0px rgba(0, 0, 0, 0.10)",
+        }}
+        onClick={() => swiper.slidePrev()}
+      >
+        <FaAngleLeft className="text-3xl group-hover:text-red transition" />
+      </div>
+      <div
+        className="sm:hidden size-16 flex items-center justify-center rounded-full group cursor-pointer active:scale-90 duration-300 hover:bg-yellow"
+        style={{
+          boxShadow: "0px 0px 13.636px 0px rgba(0, 0, 0, 0.10)",
+        }}
+        onClick={() => swiper.slideNext()}
+      >
+        <FaAngleRight className="text-3xl group-hover:text-red transition" />
+      </div>
     </div>
   );
 };
