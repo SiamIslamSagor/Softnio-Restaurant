@@ -20,6 +20,7 @@ const HeroBanner = ({ setIsBannerHidden }) => {
   return (
     <div
       ref={targetRef}
+      id="home"
       className="px-[30px] pt-28 w-full bg-[#BD1F17]"
       style={{
         backgroundImage: `url(${heroBg}) `,

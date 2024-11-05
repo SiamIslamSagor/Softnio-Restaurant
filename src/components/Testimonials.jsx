@@ -174,12 +174,28 @@ const SwiperSlideItem = ({ rev }) => {
             <FlowerSvg />
           </div>
         </div>
-        <div>
+        <div className="relative">
           <img
             src={birianyImg}
             alt="biriyani image"
             className="xl:min-h-[555px] xl:min-w-[764px]"
           />
+          <div className="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+            <div className="ring-8 ring-yellow ring-opacity-30 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 50 50"
+                fill="none"
+              >
+                <path
+                  d="M25.2196 0.0168457C11.542 0.0168457 0.454163 11.1957 0.454163 24.9856C0.454163 38.7754 11.542 49.9543 25.2196 49.9543C38.8971 49.9543 49.985 38.7754 49.985 24.9856C49.9705 11.2019 38.8911 0.0315803 25.2196 0.0168457ZM35.6493 25.7811C35.4778 26.1279 35.1991 26.409 34.8551 26.5818V26.5907L20.7034 33.7247C19.8295 34.1649 18.7671 33.8076 18.3303 32.9265C18.2061 32.676 18.1422 32.3995 18.1437 32.1195V17.8517C18.1433 16.8667 18.9349 16.0679 19.9119 16.0673C20.1867 16.0672 20.4577 16.1316 20.7034 16.2554L34.8551 23.3894C35.7295 23.8287 36.0851 24.8996 35.6493 25.7811Z"
+                  fill="#FFC900"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
     </>
