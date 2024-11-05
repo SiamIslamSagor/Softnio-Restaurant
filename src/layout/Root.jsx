@@ -19,18 +19,19 @@ const Root = () => {
         {isLoading ? (
           <Preloader isLoading={isLoading} setIsLoading={setIsLoading} />
         ) : (
-          <main>
-            <Navbar isBannerHidden={isBannerHidden} />
-            <HeroBanner setIsBannerHidden={setIsBannerHidden} />
-            <About />
-            <FoodItems />
-            <BookingForm />
-            <Testimonials />
-          </main>
+          <>
+            <main>
+              <Navbar isBannerHidden={isBannerHidden} />
+              <HeroBanner setIsBannerHidden={setIsBannerHidden} />
+              <About />
+              <FoodItems />
+              <BookingForm />
+              <Testimonials />
+            </main>
+            <Footer />
+          </>
         )}
       </AnimatePresence>
-
-      <Footer />
     </div>
   );
 };

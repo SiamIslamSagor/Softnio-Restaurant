@@ -14,7 +14,7 @@ const About = () => {
       <div className="web-container">
         <div className="flex flex-col max-lggg: gap-8 lg:flex-row justify-between ">
           <div className="relative max-lg:w-full">
-            <div className="absolute top-4 md:top-6 left-4 md:left-6">
+            <div className="absolute top-4 md:top-6 left-4 md:left-6 max-sm:scale-[0.60] max-sm:-top-4 max-sm:-left-8 duration-300">
               <Stack />
             </div>
             <div>
@@ -51,11 +51,15 @@ const About = () => {
                   y: 20,
                   opacity: 0,
                 }}
-                animate={{
+                whileInView={{
                   y: 0,
                   opacity: 1,
                 }}
-                transition={{ duration: 0.5 }}
+                // animate={{
+                //   y: 0,
+                //   opacity: 1,
+                // }}
+                transition={{ duration: 0.5, delay: 0.2 }}
                 className="space-y-5"
               >
                 <h4 className="font-beba-neue text-[40px] sm:text-6xl leading-[48px] ">
@@ -198,7 +202,7 @@ const CallIconSvg = () => {
 
 const Stack = () => {
   return (
-    <div className="p-5 flex gap-2.5 items-center bg-white w-fit rounded-2xl">
+    <div className=" p-5 flex gap-2.5 items-center bg-white w-fit rounded-2xl">
       <div className="relative">
         <h4 className="text-2xl font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           50+
