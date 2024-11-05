@@ -1,6 +1,9 @@
 import footerBg from "../assets/footerBg.png";
+import { useCursorContext } from "../hoc/CursorContextProvider";
 
 const Footer = () => {
+  const { setCursorVariant } = useCursorContext();
+
   return (
     <div
       className="px-[30px] py-[120px]"
@@ -33,7 +36,15 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-[120px] flex justify-center text-center gap-6">
-          <div className="size-12 active:scale-95 duration-300 hover:border-none border rounded-full hover:bg-yellow cursor-pointer transition flex items-center justify-center">
+          <div
+            onMouseEnter={() => {
+              setCursorVariant("pointer");
+            }}
+            onMouseLeave={() => {
+              setCursorVariant("default");
+            }}
+            className="size-12 active:scale-95 duration-300 hover:border-none border rounded-full hover:bg-yellow cursor-pointer transition flex items-center justify-center"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="25"
@@ -47,7 +58,15 @@ const Footer = () => {
               />
             </svg>
           </div>
-          <div className="size-12 active:scale-95 duration-300 hover:border-none border rounded-full hover:bg-yellow cursor-pointer transition flex items-center justify-center">
+          <div
+            onMouseEnter={() => {
+              setCursorVariant("pointer");
+            }}
+            onMouseLeave={() => {
+              setCursorVariant("default");
+            }}
+            className="size-12 active:scale-95 duration-300 hover:border-none border rounded-full hover:bg-yellow cursor-pointer transition flex items-center justify-center"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="25"
@@ -61,7 +80,15 @@ const Footer = () => {
               />
             </svg>
           </div>
-          <div className="size-12 active:scale-95 duration-300 hover:border-none border rounded-full hover:bg-yellow cursor-pointer transition flex items-center justify-center">
+          <div
+            onMouseEnter={() => {
+              setCursorVariant("pointer");
+            }}
+            onMouseLeave={() => {
+              setCursorVariant("default");
+            }}
+            className="size-12 active:scale-95 duration-300 hover:border-none border rounded-full hover:bg-yellow cursor-pointer transition flex items-center justify-center"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="25"
@@ -75,7 +102,15 @@ const Footer = () => {
               />
             </svg>
           </div>
-          <div className="size-12 active:scale-95 duration-300 hover:border-none border rounded-full hover:bg-yellow cursor-pointer transition flex items-center justify-center">
+          <div
+            onMouseEnter={() => {
+              setCursorVariant("pointer");
+            }}
+            onMouseLeave={() => {
+              setCursorVariant("default");
+            }}
+            className="size-12 active:scale-95 duration-300 hover:border-none border rounded-full hover:bg-yellow cursor-pointer transition flex items-center justify-center"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="19"

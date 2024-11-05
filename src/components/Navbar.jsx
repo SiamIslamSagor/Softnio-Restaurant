@@ -3,8 +3,10 @@ import { Fade as Hamburger } from "hamburger-react";
 import heroBg from "../assets/heroBg.png";
 import Button from "./utils/Button";
 import Logo from "./utils/Logo";
+import { useCursorContext } from "../hoc/CursorContextProvider";
 
 const Navbar = ({ isBannerHidden }) => {
+  const { setCursorVariant } = useCursorContext();
   const animationVariants = {
     haveBg: {
       opacity: 1,
@@ -29,7 +31,16 @@ const Navbar = ({ isBannerHidden }) => {
           <Logo />
           <motion.div className="flex gap-10 text-base capitalize font-medium max-lg:hidden">
             {pages?.map((page, idx) => (
-              <a key={page?.name + idx} href={page?.path} className=" ">
+              <a
+                key={page?.name + idx}
+                href={page?.path}
+                onMouseEnter={() => {
+                  setCursorVariant("pointer");
+                }}
+                onMouseLeave={() => {
+                  setCursorVariant("default");
+                }}
+              >
                 <motion.div
                   initial={{
                     y: 20,
@@ -41,7 +52,9 @@ const Navbar = ({ isBannerHidden }) => {
                   }}
                   transition={{ delay: 0.1 * (idx / 2) }}
                 >
-                  <p className="">{page?.name}</p>
+                  <p className="py-2 hover:text-yellow transition">
+                    {page?.name}
+                  </p>
                 </motion.div>
               </a>
             ))}

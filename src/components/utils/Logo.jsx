@@ -1,8 +1,10 @@
 import { useLenis } from "lenis/react";
 import LogoImg from "../../assets/logo.svg";
+import { useCursorContext } from "../../hoc/CursorContextProvider";
 
 const Logo = () => {
   const lenis = useLenis();
+  const { setCursorVariant } = useCursorContext();
 
   const handleScroll = () => {
     const target = document.getElementById("home");
@@ -17,6 +19,12 @@ const Logo = () => {
   return (
     <div
       onClick={handleScroll}
+      onMouseEnter={() => {
+        setCursorVariant("pointer");
+      }}
+      onMouseLeave={() => {
+        setCursorVariant("default");
+      }}
       className="text-[1.75rem] cursor-pointer flex items-center  gap-[6px]"
     >
       <img src={LogoImg} alt="logo" className="size-[2.25rem]" />

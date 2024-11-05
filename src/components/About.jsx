@@ -4,13 +4,15 @@ import saladPlate from "../assets/saladImg.png";
 import { useState } from "react";
 import { generateShortUUID } from "../utils";
 import { motion } from "framer-motion";
+import { useCursorContext } from "../hoc/CursorContextProvider";
 const About = () => {
   const [activeTab, setActiveTab] = useState("about");
+  const { setCursorVariant } = useCursorContext();
 
   let activeTabDetails = tabs?.find(t => t?.name === activeTab);
 
   return (
-    <div className="px-[30px] py-[120px] relative">
+    <div className="px-[30px] py-[120px] relative bg-white">
       <div className="web-container">
         <div className="flex flex-col max-lggg: gap-8 lg:flex-row justify-between ">
           <div className="relative max-lg:w-full">
@@ -31,6 +33,12 @@ const About = () => {
                 {tabs?.map(tab => (
                   <div
                     onClick={() => setActiveTab(tab.name)}
+                    onMouseEnter={() => {
+                      setCursorVariant("pointer");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorVariant("default");
+                    }}
                     key={tab?.id}
                     className={`px-4 py-2 text-sm capitalize cursor-pointer active:scale-95 duration-300 ${
                       activeTab === tab.name && "bg-red text-white"
@@ -99,10 +107,10 @@ const About = () => {
           ))}
         </div>
       </div>
-      <div className="absolute -z-10 bottom-0 -right-72 rotate-[10deg] duration-1000 max-xl:hidden">
+      <div className="absolute select-none z-10 bottom-0 -right-72 rotate-[10deg] duration-1000 max-xl:hidden">
         <motion.img
           initial={{
-            x: 150,
+            x: 180,
           }}
           whileInView={{
             x: 0,

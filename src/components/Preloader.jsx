@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Preloader = ({ isLoading, setIsLoading }) => {
   useEffect(() => {
-    setTimeout(() => setIsLoading(false), 5000);
+    setTimeout(() => setIsLoading(false), 3800);
   }, [setIsLoading]);
 
   return (
@@ -32,18 +32,9 @@ const Preloader = ({ isLoading, setIsLoading }) => {
         animate={{
           x: 180,
         }}
-        transition={{ duration: 3, delay: 1 }}
+        transition={{ duration: 2.5, delay: 1 }}
         className="absolute w-[180px] h-[45px] bg-text-primary bg-opacity-95 scale-150 z-50"
       />
-      {/* <div className="absolute after:content-[''] after:absolute after:h-[43px] after:w-full after:duration-300  after:bg-blue-900 after:w4 after:top-0 text-white scale-150">
-        <Logo />
-      </div> */}
-
-      {/* <div className="w-4 overflow-hidden">
-        <div className="bg-red w-max absolute opacity15 text-white scale-150 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-          <Logo />
-        </div>
-      </div> */}
     </motion.div>
   );
 };

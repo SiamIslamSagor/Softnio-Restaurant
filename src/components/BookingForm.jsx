@@ -1,9 +1,12 @@
 import bgImg from "../assets/bookingBannerImg.png";
+import { useCursorContext } from "../hoc/CursorContextProvider";
 import Button from "./utils/Button";
 
 import SectionTitle from "./utils/SectionTitle";
 
 const BookingForm = () => {
+  const { setCursorVariant } = useCursorContext();
+
   return (
     <div
       style={{
@@ -28,6 +31,12 @@ const BookingForm = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 w-full">
                 <div className="w-full">
                   <input
+                    onMouseEnter={() => {
+                      setCursorVariant("hidden");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorVariant("default");
+                    }}
                     className="w-full bg-transparent border border-[#E5E7EB] focus:border-yellow transition py-3 px-4 focus:outline-none"
                     placeholder="Your Name *"
                     type="text"
@@ -37,6 +46,12 @@ const BookingForm = () => {
                 </div>
                 <div className="w-full">
                   <input
+                    onMouseEnter={() => {
+                      setCursorVariant("hidden");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorVariant("default");
+                    }}
                     className="w-full bg-transparent border border-[#E5E7EB] focus:border-yellow transition py-3 px-4 focus:outline-none"
                     placeholder="Your Email *"
                     type="text"
@@ -48,6 +63,12 @@ const BookingForm = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 w-full">
                 <div className="w-full relative">
                   <input
+                    onMouseEnter={() => {
+                      setCursorVariant("hidden");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorVariant("default");
+                    }}
                     className="relative z-10 w-full bg-transparent border border-[#E5E7EB] focus:border-yellow transition py-3 px-4 focus:outline-none appearance-none dark:text-white"
                     placeholder="Reservation Date"
                     type="datetime-local"
@@ -75,6 +96,12 @@ const BookingForm = () => {
                 </div>
                 <div className="w-full relative">
                   <input
+                    onMouseEnter={() => {
+                      setCursorVariant("hidden");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorVariant("default");
+                    }}
                     className="relative z-10 w-full bg-transparent border border-[#E5E7EB] focus:border-yellow transition py-3 px-4 focus:outline-none"
                     placeholder="Total Price"
                     type="number"
@@ -105,6 +132,12 @@ const BookingForm = () => {
               </div>
               <div className="w-full">
                 <textarea
+                  onMouseEnter={() => {
+                    setCursorVariant("hidden");
+                  }}
+                  onMouseLeave={() => {
+                    setCursorVariant("default");
+                  }}
                   className="w-full min-h-[140px] resize-none bg-transparent border border-[#E5E7EB] focus:border-yellow transition py-3 px-4 focus:outline-none"
                   placeholder="Message"
                   name=""

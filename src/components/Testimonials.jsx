@@ -1,6 +1,5 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { useRef } from "react";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import "swiper/css";
 import {
   A11y,
@@ -9,14 +8,17 @@ import {
   Navigation,
   Pagination,
 } from "swiper/modules";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import birianyImg from "../assets/image.png";
 import tomatoSliceImg from "../assets/tomatoSliceImg.png";
+import { useCursorContext } from "../hoc/CursorContextProvider";
 import { generateShortUUID } from "../utils";
 import SectionTitle from "./utils/SectionTitle";
+import { SwiperNavButtons } from "./utils/SwiperNavButtons";
 
 const Testimonials = () => {
   const targetRef = useRef(null);
+  const { setCursorVariant } = useCursorContext();
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -62,6 +64,12 @@ const Testimonials = () => {
         >
           {reviews?.map(rev => (
             <SwiperSlide
+              onMouseEnter={() => {
+                setCursorVariant("hidden");
+              }}
+              onMouseLeave={() => {
+                setCursorVariant("default");
+              }}
               key={rev?.id}
               className="bg-yellow cursor-grab min-w-full"
             >
@@ -72,11 +80,12 @@ const Testimonials = () => {
           <SwiperNavButtons
             targetRef={targetRef}
             scrollYProgress={scrollYProgress}
+            setCursorVariant={setCursorVariant}
           />
         </Swiper>
       </div>
 
-      <div className="absolute top-44 -left-[144px]  max-xl:hidden">
+      <div className="absolute select-none top-44 -left-[144px]  max-xl:hidden">
         <motion.img
           initial={{
             x: -140,
@@ -90,64 +99,6 @@ const Testimonials = () => {
           src={tomatoSliceImg}
           alt="tomato's slice"
         />
-      </div>
-    </div>
-  );
-};
-
-const SwiperNavButtons = ({ scrollYProgress, targetRef }) => {
-  const swiper = useSwiper();
-
-  const xValue1 = useTransform(scrollYProgress, [0, 1], [48, 0]);
-
-  const xValue2 = useTransform(scrollYProgress, [0, 1], [-48, 0]);
-
-  return (
-    <div
-      ref={targetRef}
-      className="flex max-sm:justify-center py-2 gap-8 absolute max-sm:bottom-5 max-sm:left-1/2 max-sm:-translate-x-1/2 sm:right-0 sm:top-10 lg:top-20 z-40"
-    >
-      {/* lg */}
-      <motion.div
-        className="max-sm:hidden size-16 flex items-center justify-center rounded-full group cursor-pointer active:scale-90 duration-300 hover:bg-yellow"
-        style={{
-          boxShadow: "0px 0px 13.636px 0px rgba(0, 0, 0, 0.10)",
-          x: xValue1,
-          opacity: scrollYProgress,
-        }}
-        onClick={() => swiper.slidePrev()}
-      >
-        <FaAngleLeft className="text-3xl group-hover:text-red transition" />
-      </motion.div>
-      <motion.div
-        className="max-sm:hidden size-16 flex items-center justify-center rounded-full group cursor-pointer active:scale-90 duration-300 hover:bg-yellow"
-        style={{
-          boxShadow: "0px 0px 13.636px 0px rgba(0, 0, 0, 0.10)",
-          x: xValue2,
-          opacity: scrollYProgress,
-        }}
-        onClick={() => swiper.slideNext()}
-      >
-        <FaAngleRight className="text-3xl group-hover:text-red transition" />
-      </motion.div>
-      {/* sm */}
-      <div
-        className="sm:hidden size-16 flex items-center justify-center rounded-full group cursor-pointer active:scale-90 duration-300 hover:bg-yellow"
-        style={{
-          boxShadow: "0px 0px 13.636px 0px rgba(0, 0, 0, 0.10)",
-        }}
-        onClick={() => swiper.slidePrev()}
-      >
-        <FaAngleLeft className="text-3xl group-hover:text-red transition" />
-      </div>
-      <div
-        className="sm:hidden size-16 flex items-center justify-center rounded-full group cursor-pointer active:scale-90 duration-300 hover:bg-yellow"
-        style={{
-          boxShadow: "0px 0px 13.636px 0px rgba(0, 0, 0, 0.10)",
-        }}
-        onClick={() => swiper.slideNext()}
-      >
-        <FaAngleRight className="text-3xl group-hover:text-red transition" />
       </div>
     </div>
   );
