@@ -104,6 +104,7 @@ const Root = () => {
       ref={mainRef}
       className="z-[999999999999999999999] w-full overflow-x-hidden relative"
     >
+      {/* cursor */}
       <motion.div
         transition={spring}
         variants={variants}
@@ -129,25 +130,26 @@ const Root = () => {
           <span className="size-4 !bg-red  rounded-full"></span>
         )}
       </motion.div>
-      {/*  */}
-      {/*  */}
+
+      {/* content */}
       <AnimatePresence mode="wait">
-        {isLoading ? (
+        {isLoading && (
           <Preloader isLoading={isLoading} setIsLoading={setIsLoading} />
-        ) : (
-          <>
-            <main>
-              <Navbar isBannerHidden={isBannerHidden} />
-              <HeroBanner setIsBannerHidden={setIsBannerHidden} />
-              <About />
-              <FoodItems />
-              <BookingForm />
-              <Testimonials />
-            </main>
-            <Footer />
-          </>
         )}
       </AnimatePresence>
+      <>
+        {isLoading || (
+          <main>
+            <Navbar isBannerHidden={isBannerHidden} />
+            <HeroBanner setIsBannerHidden={setIsBannerHidden} />
+            <About />
+            <FoodItems />
+            <BookingForm />
+            <Testimonials />
+          </main>
+        )}
+        <Footer />
+      </>
     </div>
   );
 };

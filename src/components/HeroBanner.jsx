@@ -1,10 +1,16 @@
 import Button from "./utils/Button";
 import heroBannerImg from "../assets/heroBannerImg.png";
 import heroBg from "../assets/heroBg.png";
-import { useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
+import heroVdo from "../assets/heroVdo.mp4";
+import { useCursorContext } from "../hoc/CursorContextProvider";
 
 const HeroBanner = ({ setIsBannerHidden }) => {
+  const { setCursorVariant } = useCursorContext();
+
+  const [isHovered, setIsHovered] = useState(false);
+
   const targetRef = useRef(null);
 
   const isInView = useInView(targetRef, {
@@ -86,24 +92,48 @@ const HeroBanner = ({ setIsBannerHidden }) => {
             <WhiteFlowerSvg />
           </motion.div>
 
-          <div className="z-10">
+          <div
+            className="relative z-10 overflow-hidden"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {/* Image */}
             <motion.img
-              initial={{
-                // y: -20,
-                opacity: 0,
-              }}
-              animate={{
-                // y: 0,
-                opacity: 1,
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 1.5 }}
               src={heroBannerImg}
               alt="hero banner image"
-              className="max-lg:size-full"
+              className="w-full h-full object-cover"
               loading="lazy"
             />
-          </div>
 
+            {/* Video */}
+            <AnimatePresence mode="wait">
+              {isHovered && (
+                <motion.video
+                  onMouseEnter={() => {
+                    setCursorVariant("hidden");
+                  }}
+                  onMouseLeave={() => {
+                    setCursorVariant("default");
+                  }}
+                  width="100%"
+                  height="100%"
+                  autoPlay
+                  muted
+                  loop
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute top-0 left-0 w-full h-full object-cover"
+                >
+                  <source src={heroVdo} type="video/mp4" />
+                </motion.video>
+              )}
+            </AnimatePresence>
+          </div>
           <motion.div
             initial={{
               scale: 0,
@@ -119,7 +149,7 @@ const HeroBanner = ({ setIsBannerHidden }) => {
               damping: 200,
               stiffness: 50,
             }}
-            className="max-sm:scale-50 sm:size-[120px] bg-yellow ring-8 ring-yellow rounded-full flex items-center justify-center absolute -bottom-4 sm:bottom-6 md:bottom-8 2xl:bottom-2 -right-4 sm:right-6 md:right-8 2xl:-right-12 shadow-[500px]"
+            className="max-sm:scale-50 sm:size-[120px] bg-yellow ring-8 ring-yellow rounded-full flex items-center justify-center z-50 absolute -bottom-4 sm:bottom-6 md:bottom-8 2xl:bottom-2 -right-4 sm:right-6 md:right-8 2xl:-right-12 shadow-[500px]"
           >
             <div className="rounded-full flex items-center justify-center p-3 border-2 border-dashed border-red">
               <p className="font-beba-neue text-4xl leading-[100%] font-bold text-text-primary p-2">

@@ -18,12 +18,11 @@ const Preloader = ({ isLoading, setIsLoading }) => {
         },
       }}
       exit={{
-        opacity: 0,
         y: -2000,
       }}
-      transition={{ duration: 1.5, damping: 300 }}
+      transition={{ duration: 2, damping: 300 }}
       animate={isLoading ? "show" : "hidden"}
-      className="fixed z-[999999] min-h-screen bg-text-primary w-full flex items-center justify-center overflow-hidden"
+      className="fixed z-[999999] min-h-[100vh] bg-text-primary w-full flex items-center justify-center overflow-hidden"
     >
       <div className="absolute text-white scale150 z-40">
         <Logo />
@@ -32,7 +31,7 @@ const Preloader = ({ isLoading, setIsLoading }) => {
         animate={{
           x: 180,
         }}
-        transition={{ duration: 2.5, delay: 1 }}
+        transition={{ duration: 2, delay: 1 }}
         className="absolute w-[180px] h-[45px] bg-text-primary bg-opacity-95 scale-150 z-50"
       />
     </motion.div>

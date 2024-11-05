@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import footerBg from "../assets/footerBg.png";
 import { useCursorContext } from "../hoc/CursorContextProvider";
 
@@ -14,9 +15,21 @@ const Footer = () => {
     >
       <div className="web-container text-white">
         <div>
-          <h2 className="tracking-wide font-beba-neue text-center font-bold text-[40px] sm:text-[4rem]">
+          <motion.h2
+            initial={{
+              y: 44,
+              opacity: 0,
+            }}
+            whileInView={{
+              y: 0,
+              opacity: 1,
+            }}
+            transition={{ delay: 0.5 }}
+            viewport={{ once: true }}
+            className="tracking-wide font-beba-neue text-center font-bold text-[40px] sm:text-[4rem]"
+          >
             We ready to have you the best dining experiences
-          </h2>
+          </motion.h2>
           <div className="flex flex-wrap mt-12 justify-center gap-6">
             {footerItems.map(item => (
               <div

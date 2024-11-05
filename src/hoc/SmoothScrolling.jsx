@@ -5,7 +5,7 @@ import ReactLenis from "lenis/react";
 function SmoothScrolling({ children }) {
   const lenisOptions = {
     lerp: 0.05,
-    duration: 2,
+    duration: 1,
     smoothTouch: false,
     smooth: true,
   };

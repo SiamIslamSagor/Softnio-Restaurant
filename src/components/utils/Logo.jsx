@@ -25,7 +25,7 @@ const Logo = () => {
       onMouseLeave={() => {
         setCursorVariant("default");
       }}
-      className="text-[1.75rem] cursor-pointer flex items-center  gap-[6px]"
+      className="text-[1.75rem] select-none cursor-pointer flex items-center  gap-[6px]"
     >
       <img src={LogoImg} alt="logo" className="size-[2.25rem]" />
       <h1 className="font-roboto">
